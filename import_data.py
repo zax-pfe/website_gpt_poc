@@ -5,12 +5,15 @@ from psycopg2 import sql
 # Replace these with your PostgreSQL credentials
 host = "localhost"
 database = "movie_database"
-user = "Axel"
-password = "Axel"
-
+user = "postgres"
+password = "Axelfalco5859"
 # Connect to the database
 conn = psycopg2.connect(host=host, dbname=database, user=user, password=password)
 cursor = conn.cursor()
+
+# Drop the movies table if it exists
+cursor.execute("DROP TABLE IF EXISTS movies;")
+conn.commit()
 
 # Create the movies table
 cursor.execute("""
