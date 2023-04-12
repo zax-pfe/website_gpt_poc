@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 # Load and clean the title.basics.tsv.gz file
 title_basics = pd.read_csv('title.basics.tsv.gz', delimiter='\t', low_memory=False)
 title_basics = title_basics[title_basics['titleType'] == 'movie']  # Filter only movies
