@@ -1,7 +1,8 @@
 import pandas as pd
 import psycopg2
 from psycopg2 import sql
-
+import sys
+sys.path.insert(0, 'C:\\Users\\33633\\Documents\\website_gpt_poc')
 from extract_credentials import return_credentials
 
 host, database, user, password = return_credentials()
