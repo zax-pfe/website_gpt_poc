@@ -1,10 +1,8 @@
 import psycopg2
 
-# Replace these with your PostgreSQL credentials
-host = "localhost"
-database = "movie_database"
-user = "postgres"
-password = "Axelfalco5859"
+from extract_credentials import return_credentials
+
+host, database, user, password = return_credentials()
 
 # Connect to the database
 conn = psycopg2.connect(host=host, dbname=database, user=user, password=password)

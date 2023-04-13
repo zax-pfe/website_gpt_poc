@@ -29,6 +29,8 @@ def get_table_properties(table_name):
     cursor.close()
     conn.close()
 
+
+
 def get_distinct_genres():
 
     # Connect to the database
@@ -57,5 +59,4 @@ def get_distinct_genres():
 a = get_distinct_genres()
 
 print(a)
-# Replace 'movies' with the name of the table you want to get the properties of
 # get_table_properties("movies")

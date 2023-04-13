@@ -1,6 +1,6 @@
 import openai
 
-class Convert_to_sql:
+class Convert_to_sql_gpt4:
     def __init__(self,api_path='api_key.txt'):
         openai.api_key = self.open_file(api_path)
         
