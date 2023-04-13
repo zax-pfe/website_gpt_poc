@@ -1,0 +1,58 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Query</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles2.css') }}">
+
+</head>
+<body>
+    <h1>Movie Query</h1>
+    <form action="/" method="post">
+        <label for="query">Enter SQL Query:</label>
+        <input type="text" name="query" id="query" required placeholder = "example : 10 best movies released between 1997 and 2005">
+        <button type="submit">Search</button>
+    </form>
+
+    {% if sql_query %}
+    <h3>Query created by GPT:</h3>
+    <p>{{ sql_query }}</p>
+    {% endif %}
+
+    {% if movies %}
+    <h2>Results:</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Genre</th>
+            <th>Year of Production</th>
+            <th>Best IMDB Score</th>
+            <th>Duration</th>
+        </tr>
+        {% for movie in movies %}
+        <tr>
+            <td>{{ movie[1] }}</td>
+            <td>{{ movie[2] }}</td>
+            <td>{{ movie[3] }}</td>
+            <td>{{ movie[4] }}</td>
+            <td>{{ movie[5] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    <div id="loading" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+
+    <script>
+        document.querySelector("form").addEventListener("submit", function() {
+            document.getElementById("loading").style.display = "block";
+        });
+    </script>
+
+</body>
+</html>
