@@ -30,18 +30,31 @@ def index():
         response = sql_convertor_gtp4.generate_response(query)
         sql_query = response["choices"][0]["message"]["content"]
         call = True
-        conn = get_connection()
-        cursor = conn.cursor()
-        cursor.execute(sql_query)
-        movies = cursor.fetchall()
+
+        try:
+
+            conn = get_connection()
+            cursor = conn.cursor()
+            cursor.execute(sql_query)
+            movies = cursor.fetchall()
+            cursor.close()
+            conn.close()
+            succed = True
+
+        except Exception as e:
+
+            print(e)
+
+            succed = False
+            movies = None
+
         
-        # print("===== MOVIES =====",movies)
-        cursor.close()
-        conn.close()
+        print("===== MOVIES =====",movies)
 
-        return render_template("index.html", movies=movies, sql_query=sql_query, call=call)
+        return render_template("index.html", movies=movies, sql_query=sql_query, call=call, succed=succed)
 
-    return render_template("index.html", movies=None, sql_query=None, call=False)
+
+    return render_template("index.html", movies=None, sql_query=None, call=False, succed=True)
 
 # @app.route('/movie/<movie_id>')
 # def movie_details(movie_id):

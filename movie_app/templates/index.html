@@ -20,6 +20,10 @@
     {% if sql_query %}
     <h3>Query created by GPT:</h3>
     <p>{{ sql_query }}</p>
+        {% if succed == False %}
+        <h3>error with the query, reformulate your request </h3>
+        {% endif %}
+
     {% endif %}
 
     {% if movies %}
