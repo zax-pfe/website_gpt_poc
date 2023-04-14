@@ -1,5 +1,7 @@
 import sys
-sys.path.insert(0, 'C:\\Users\\33633\\Documents\\website_gpt_poc')
+import os
+current_dir = os.getcwd() 
+sys.path.insert(0, current_dir)
 from translation_natural_language_sql_gpt4 import Convert_to_sql_gpt4
 
 

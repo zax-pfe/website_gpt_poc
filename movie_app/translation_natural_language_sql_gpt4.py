@@ -1,6 +1,8 @@
 import openai
+import os
+parent_dir = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
 
-api_key_path = "C:\\Users\\PUECH Axel\\Documents\\POC GPT\\api_key.txt"
+api_key_path = os.path.join(parent_dir,"api_key.txt")
 
 class Convert_to_sql_gpt4:
     def __init__(self,api_path=api_key_path):

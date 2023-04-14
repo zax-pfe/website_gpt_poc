@@ -1,6 +1,11 @@
 import json
+import os
+parent_dir = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
 
-credentials_path = "C:\\Users\\PUECH Axel\\Documents\\POC GPT\\credentials.json"
+
+credentials_path = os.path.join(parent_dir,"credentials.json")
+
+
 def return_credentials(json_path = credentials_path):
     # Load credentials from the JSON file
     with open(json_path, "r") as file:

@@ -2,10 +2,14 @@ import pandas as pd
 import psycopg2
 from psycopg2 import sql
 import sys
-sys.path.insert(0, 'C:\\Users\\33633\\Documents\\website_gpt_poc')
-from extract_credentials import return_credentials
+import os
 
-host, database, user, password = return_credentials()
+parent_dir = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
+sys.path.insert(0, parent_dir)
+
+from extract_credentials import return_credentials
+json_path = os.path.join(parent_dir, "credentials.json")
+host, database, user, password = return_credentials(json_path)
 
 conn = psycopg2.connect(host=host, dbname=database, user=user, password=password)
 cursor = conn.cursor()
@@ -28,7 +32,9 @@ cursor.execute("""
 conn.commit()
 
 # Load the cleaned_movie_data.csv
-movie_data = pd.read_csv('cleaned_movie_data.csv')
+
+csv_path = os.path.join(parent_dir, "cleaned_movie_data.csv")
+movie_data = pd.read_csv(csv_path)
 
 # Insert data into the movies table
 for index, row in movie_data.iterrows():

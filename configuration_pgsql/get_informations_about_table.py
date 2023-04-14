@@ -1,9 +1,15 @@
 import psycopg2
-import json
 import sys
-sys.path.insert(0, 'C:\\Users\\33633\\Documents\\website_gpt_poc')
+import os 
+
+parent_dir = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
+sys.path.insert(0, parent_dir)
+
+
 from extract_credentials import return_credentials
-host, database, user, password = return_credentials()
+json_path = os.path.join(parent_dir, "credentials.json")
+
+host, database, user, password = return_credentials(json_path)
 
 
 def get_table_properties(table_name):

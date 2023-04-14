@@ -1,4 +1,6 @@
 import requests
+import os
+parent_dir = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
 
 def get_movie_image(movie_id, api_key):
     url = f"https://www.omdbapi.com/?i={movie_id}&apikey={api_key}"
@@ -22,7 +24,11 @@ def open_file(filepath):
     
 # Example movie ID: tt1375666 (Inception)
 movie_id = "146944"
-api_key_path = "C:\\Users\\PUECH Axel\\Documents\\POC GPT\\api_key_omdb.txt"
+
+print("parent_dir",parent_dir)
+api_key_path = os.path.join(parent_dir,"api_key_omdb.txt")
+
+
 api_key = open_file(api_key_path)
 
 image_url = get_movie_image(movie_id, api_key)

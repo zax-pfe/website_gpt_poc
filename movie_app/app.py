@@ -1,14 +1,19 @@
 from flask import Flask, render_template, request, redirect, url_for
 import psycopg2
-
-
-from extract_credentials import return_credentials
 from get_image_imdb import get_movie_image, open_file
-
 from translation_natural_language_sql_gpt4 import Convert_to_sql_gpt4
+import os
+
+parent_dir = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
+from extract_credentials import return_credentials
+
+
 sql_convertor_gtp4 = Convert_to_sql_gpt4()
 
-api_key_path = "C:\\Users\\PUECH Axel\\Documents\\POC GPT\\api_key_omdb.txt"
+api_key_path = os.path.join(parent_dir, "api_key_omdb.txt")
+
+
+
 
 app = Flask(__name__)
 
