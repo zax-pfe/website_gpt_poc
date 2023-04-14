@@ -1,6 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 import psycopg2
-from get_image_imdb import get_movie_image, open_file
 from translation_natural_language_sql_gpt4 import Convert_to_sql_gpt4
 import os
 
@@ -36,7 +35,7 @@ def index():
         cursor.execute(sql_query)
         movies = cursor.fetchall()
         
-        print("===== MOVIES =====",movies)
+        # print("===== MOVIES =====",movies)
         cursor.close()
         conn.close()
 
