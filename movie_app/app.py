@@ -10,7 +10,7 @@ from extract_credentials import return_credentials
 
 sql_convertor_gtp4 = Convert_to_sql_gpt4()
 
-api_key_path = os.path.join(parent_dir, "api_key_omdb.txt")
+# api_key_path = os.path.join(parent_dir, "api_key_omdb.txt")
 
 
 
@@ -44,15 +44,15 @@ def index():
 
     return render_template("index.html", movies=None, sql_query=None, call=False)
 
-@app.route('/movie/<movie_id>')
-def movie_details(movie_id):
-    # Retrieve movie image URL here
-    print(movie_id)
-    movie_image_url = get_movie_image(movie_id,open_file(api_key_path))
-    print(movie_image_url)
+# @app.route('/movie/<movie_id>')
+# def movie_details(movie_id):
+#     # Retrieve movie image URL here
+#     print(movie_id)
+#     movie_image_url = get_movie_image(movie_id,open_file(api_key_path))
+#     print(movie_image_url)
     
-    # movie_image_url = "https://example.com/path/to/movie/image.jpg"
-    return render_template('movie_details.html', movie_image_url=movie_image_url)
+#     # movie_image_url = "https://example.com/path/to/movie/image.jpg"
+#     return render_template('movie_details.html', movie_image_url=movie_image_url)
 
 if __name__ == "__main__":
     app.run(debug=True)
