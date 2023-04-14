@@ -4,3 +4,4 @@ title.ratings.tsv.gz
 api_key.txt
 api_key_omdb.txt
 credentials.json
+__pycache__
