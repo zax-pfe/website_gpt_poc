@@ -1,0 +1,132 @@
+/* styles2.css */
+
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #4a4a4a;
+    margin-top: 2rem;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #4a4a4a;
+}
+
+h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #4a4a4a;
+}
+
+p {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #4a4a4a;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+label {
+    font-size: 1.2rem;
+    color: #4a4a4a;
+    margin-bottom: 0.5rem;
+}
+
+input {
+    width: 80%;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    border-color: #56d6ff;
+    box-shadow: 0 0 5px rgba(86, 214, 255, 0.5);
+}
+
+button {
+    font-size: 1rem;
+    color: #fff;
+    background-color: #56d6ff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #3ab2d6;
+}
+
+/* Table Styles */
+table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    font-size: 1rem;
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 1px solid #ccc;
+    transition: all 0.3s ease;
+}
+
+th {
+    background-color: #56d6ff;
+    color: #fff;
+}
+
+tr:hover {
+    background-color: #eee;
+}
+
+/* Spinner */
+.spinner {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #56d6ff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Loading Overlay */
+#loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 9999;
+}

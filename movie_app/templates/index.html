@@ -6,60 +6,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Query</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles2.css') }}">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles4.css') }}">
 </head>
 <body>
-    <h1>Movie Query</h1>
-    <form action="/" method="post">
+    <h1 class="title">Movie Query</h1>
+    <form action="/" method="post" id="search-form">
         <label for="query">Enter SQL Query:</label>
-        <input type="text" name="query" id="query" required placeholder = "example : 10 best movies released between 1997 and 2005">
-        <button type="submit">Search</button>
+        <input type="text" name="query" id="query" required placeholder="example : 10 best movies released between 1997 and 2005">
+        <button type="submit" id="search-button">Search</button>
     </form>
 
-    {% if sql_query %}
-    <h3>Query created by GPT:</h3>
-    <p>{{ sql_query }}</p>
-        {% if succed == False %}
-        <h3>error with the query, reformulate your request </h3>
+    <div id="results-section">
+        {% if sql_query %}
+        <h3>Query created by GPT:</h3>
+        <p>{{ sql_query }}</p>
+            {% if succed == False %}
+            <h3>error with the query, reformulate your request </h3>
+            {% endif %}
         {% endif %}
 
-    {% endif %}
+        {% if movies %}
+        <h2>Results:</h2>
+        <table id="results-table">
+            <tr>
+                <th>Name</th>
+                <th>Genre</th>
+                <th>Year of Production</th>
+                <th>IMDB Score</th>
+                <th>Duration</th>
+            </tr>
+            {% for movie in movies %}
+            <tr class="result-row">
+                <td>{{ movie[1] }}</td>
+                <td>{{ movie[2] }}</td>
+                <td>{{ movie[3] }}</td>
+                <td>{{ movie[4] }}</td>
+                <td>{{ movie[5] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
 
-    {% if movies %}
-    <h2>Results:</h2>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Genre</th>
-            <th>Year of Production</th>
-            <th>IMDB Score</th>
-            <th>Duration</th>
-        </tr>
-        {% for movie in movies %}
-        <tr>
-            <td>{{ movie[1] }}</td>
-            <td>{{ movie[2] }}</td>
-            <td>{{ movie[3] }}</td>
-            <td>{{ movie[4] }}</td>
-            <td>{{ movie[5] }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-
-    {% elif not movies and call == True %}
-        <h2>No movies found.</h2>
-    {% endif %}
+        {% elif not movies and call == True %}
+            <h2>No movies found.</h2>
+        {% endif %}
+    </div>
 
     <div id="loading" style="display: none;">
         <div class="spinner"></div>
     </div>
 
-    <script>
-        document.querySelector("form").addEventListener("submit", function() {
-            document.getElementById("loading").style.display = "block";
-        });
-    </script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 
 </body>
 </html>
